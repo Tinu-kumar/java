@@ -10,7 +10,7 @@ class Animal{
 
 }
 public void eat(){
- System.out.println("i am eating");
+ System.out.println("eating");
 }
 public void run(){
  System.out.println("i am running");
