@@ -1,0 +1,1406 @@
+MySQL Shell 8.0.30
+
+Copyright (c) 2016, 2022, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > show databases
+SyntaxError: Unexpected identifier
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > show databases
+ERROR: Not connected.
+           -> \^C
+ MySQL  SQL > \connect root@localhost
+Creating a session to 'root@localhost'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 29 (X protocol)
+Server version: 8.0.30 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sql_workbench      |
+| sys                |
+| tinukumar          |
++--------------------+
+6 rows in set (0.0015 sec)
+ MySQL  localhost:33060+ ssl  SQL > create database amitdb;
+Query OK, 1 row affected (0.0063 sec)
+ MySQL  localhost:33060+ ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| amitdb             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sql_workbench      |
+| sys                |
+| tinukumar          |
++--------------------+
+7 rows in set (0.0018 sec)
+ MySQL  localhost:33060+ ssl  SQL > use amitdb
+Default schema set to `amitdb`.
+Fetching table and column names from `amitdb` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  amitdb  SQL > CREATE TABLE EMPLOYEE(
+                                         -> EMPID INT,
+                                         -> FirstName varchar(255),
+                                         -> LastName varchar(255),
+                                         -> EmpAge int,
+                                         -> EmpZone varchar(255),
+                                         -> );
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 7
+ MySQL  localhost:33060+ ssl  amitdb  SQL > CREATE TABLE EMPLOYEE( EMPID INT,  FirstName varchar(255), LastName varchar(255), EmpAge int, EmpZone varchar(255) );
+Query OK, 0 rows affected (0.0246 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.0037 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(1,'JACK' , 'KUMAR' , 23 , 'NORTH);
+                                         '> DESC EMPLOYEE;^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(1,'JACK','KUMAR',23 ,'NORTH');
+Query OK, 1 row affected (0.0076 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT*FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
++-------+-----------+----------+--------+---------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.0029 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
++-------+-----------+----------+--------+---------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE (EMPID , FirstName , LastName ,EmpAge ,EmpZone) VALUES(2,'ANKIT','KUMAR,25,'SOUTH');
+                                         '> INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(2, 'ANKIT' , 'RAJ' , 25 , 'SOUTH');
+                                         '> INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(2,'ANKIT','RAJ',26 ,'SOUTH');
+                                         '> INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(2,'MOHAN','RAJ' , 27 , 'SOUTH');
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT *FROM EMPLOYEE
+                                         -> SELECT * FROM EMPLOYEE;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELECT * FROM EMPLOYEE' at line 2
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
++-------+-----------+----------+--------+---------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(2,'MOHAN','RAJ',27 ,'SOUTH');
+Query OK, 1 row affected (0.0048 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |
++-------+-----------+----------+--------+---------+
+2 rows in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(3,'HRITIK','KHURANA',20 ,'EAST');
+Query OK, 1 row affected (0.0047 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |
++-------+-----------+----------+--------+---------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID , FirstName ,LastName ,EmpAge ,EmpZone) VALUES(4,'SOHAN','YADAV',32 ,'WEST');
+Query OK, 1 row affected (0.0053 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |
++-------+-----------+----------+--------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select empid from employee;
++-------+
+| empid |
++-------+
+|     1 |
+|     2 |
+|     3 |
+|     4 |
++-------+
+4 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select empid , firstname from employee;
++-------+-----------+
+| empid | firstname |
++-------+-----------+
+|     1 | JACK      |
+|     2 | MOHAN     |
+|     3 | HRITIK    |
+|     4 | SOHAN     |
++-------+-----------+
+4 rows in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select lastname from employee;
++----------+
+| lastname |
++----------+
+| KUMAR    |
+| RAJ      |
+| KHURANA  |
+| YADAV    |
++----------+
+4 rows in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select empage,empzone from employee;
++--------+---------+
+| empage | empzone |
++--------+---------+
+|     23 | NORTH   |
+|     27 | SOUTH   |
+|     20 | EAST    |
+|     32 | WEST    |
++--------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > CREATE TABLE EMPLOYEE(
+                                         -> EmpId int NOT NULL,
+                                         -> FirstName varchar(255),
+                                         -> LastName varchar(255),
+                                         -> EmpAge int);
+ERROR: 1050: Table 'employee' already exists
+ MySQL  localhost:33060+ ssl  amitdb  SQL > CREATE TABLE DEPARTMENT(
+                                         -> EmpId int NOT NULL,
+                                         -> FirstName varchar(255),
+                                         -> LastName varchar(255),
+                                         -> EmpAge int);
+Query OK, 0 rows affected (0.0263 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC DEPARTMENT
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC DEPARTMENT
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC DEPARTMENT
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC DEPARTMENT;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpId     | int          | NO   |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.0039 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName , LastName , EmpAge) values(1,'ankit,'kumar',25);
+                                         '> INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES(1,'SOHAN','YADAV',32);
+                                         '> INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) values(1, 'mohan', 'kumar' , 23);
+                                         '>
+                                         '>
+                                         '>
+                                         '>
+                                         '> INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES(1,'SOHAN','YADAV',32 );
+                                         '>
+                                         '> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES(1,'SOHAN','YADAV',32);
+Query OK, 1 row affected (0.0074 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT
+                                         -> select * FROM DEPARTMENT;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * FROM DEPARTMENT' at line 2
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELCET * FROM DEPARTMENT;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELCET * FROM DEPARTMENT' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from department;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
++-------+-----------+----------+--------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES('SOHAN','YADAV',32);
+ERROR: 1136: Column count doesn't match value count at row 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES(1,'YADAV',32);
+ERROR: 1136: Column count doesn't match value count at row 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES(1,'SOHAN','YADAV');
+ERROR: 1136: Column count doesn't match value count at row 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES('SOHAN','YADAV',);
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES('SOHAN','YADAV');
+ERROR: 1136: Column count doesn't match value count at row 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO DEPARTMENT(EMPID , FirstName ,LastName ,EmpAge) VALUES(2,'mohan','kumar',32);
+Query OK, 1 row affected (0.0029 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from department
+                                         -> sel^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from department;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
++-------+-----------+----------+--------+
+2 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > insert into department(empid ,firstname,lastname,empage)values(NULL ,'JACK','SPARROW',34);
+ERROR: 1048: Column 'EmpId' cannot be null
+ MySQL  localhost:33060+ ssl  amitdb  SQL > insert into department(empid ,firstname,lastname,empage)values(3 ,'JACK','SPARROW',NULL);
+Query OK, 1 row affected (0.0064 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELCET * FROM DPARTMENT;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELCET * FROM DPARTMENT' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |   NULL |
++-------+-----------+----------+--------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > create database newamitdb;
+Query OK, 1 row affected (0.0065 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > use newamitdb;
+Default schema set to `newamitdb`.
+Fetching table and column names from `newamitdb` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > ue newamitdb;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ue newamitdb' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employee(
+                                            -> EmpId int NOT NULL;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employee( EmpId int NOT NULL , FirstName varchar(255) , LastName varchar(255) , UNIQUE(EmpId));
+Query OK, 0 rows affected (0.0234 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc employee;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpId     | int          | NO   | PRI | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.0033 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table department( EmpId int NOT NULL , FirstName varchar(255) , LastName varchar(255) );
+Query OK, 0 rows affected (0.0215 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > select * from department
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > select * from department;
+Empty set (0.0034 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc department;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EmpId     | int          | NO   |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+3 rows in set (0.0030 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table department(empid ,firstname ,lastname) values(1,'name','kumar');
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',firstname ,lastname) values(1,'name','kumar')' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table department(empid ,firstname ,lastname) values(1,'name','kumar' );
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',firstname ,lastname) values(1,'name','kumar' )' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table department(empid,firstname,lastname)values(1,'name','kumar' );
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',firstname,lastname)values(1,'name','kumar' )' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO DEPARTMENT(EMPID ,FIRSTNAME ,LASTNAME) VALUES(1,'KUMAR','RAJ');
+Query OK, 1 row affected (0.0049 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+
+| EmpId | FirstName | LastName |
++-------+-----------+----------+
+|     1 | KUMAR     | RAJ      |
++-------+-----------+----------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO DEPARTMENT(EMPID ,FIRSTNAME ,LASTNAME) VALUES(,'KUMAR','RAJ');
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','KUMAR','RAJ')' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO DEPARTMENT(EMPID ,FIRSTNAME ,LASTNAME) VALUES(1,'KUMAR','RAJ');
+Query OK, 1 row affected (0.0056 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+
+| EmpId | FirstName | LastName |
++-------+-----------+----------+
+|     1 | KUMAR     | RAJ      |
+|     1 | KUMAR     | RAJ      |
++-------+-----------+----------+
+2 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL >
+
+
+
+
+
+day2
+
+
+
+
+
+
+MySQL Shell 8.0.30
+
+Copyright (c) 2016, 2022, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > connect root@localhost
+ERROR: Not connected.
+           -> ^C
+ MySQL  SQL > show database
+ERROR: Not connected.
+           -> show databases;
+ERROR: Not connected.
+ MySQL  SQL > \connect root@localhost
+Creating a session to 'root@localhost'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 8 (X protocol)
+Server version: 8.0.30 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| amitdb             |
+| information_schema |
+| mysql              |
+| newamitdb          |
+| performance_schema |
+| sql_workbench      |
+| sys                |
+| tinukumar          |
++--------------------+
+8 rows in set (0.0015 sec)
+ MySQL  localhost:33060+ ssl  SQL > use newamitdb
+Default schema set to `newamitdb`.
+Fetching table and column names from `newamitdb` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > Select*from newamitdb;
+ERROR: 1146: Table 'newamitdb.newamitdb' doesn't exist
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc newamitdb
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc newamitdb;
+ERROR: 1146: Table 'newamitdb.newamitdb' doesn't exist
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > select * from newamitdb;
+ERROR: 1146: Table 'newamitdb.newamitdb' doesn't exist
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employe(empid int NOT NULL , firstname varchar(255) ,lastname(255), empzone varchar(255) primary key(empid));
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(255), empzone varchar(255) primary key(empid))' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employe(empid int NOT NULL , firstname varchar(255) ,lastname(255), empzone varchar(255), primary key(empid));
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(255), empzone varchar(255), primary key(empid))' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employe(empid int NOT NULL , firstname varchar(255) ,lastname(255), empzone varchar(255) primary key(empid));
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(255), empzone varchar(255) primary key(empid))' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employe(empid int NOT NULL  , firstname varchar(255) ,lastname(255), empzone varchar(255), primary key(empid));
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(255), empzone varchar(255), primary key(empid))' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employe( empid int NOT NULL  , firstname varchar(255) , lastname(255) , empzone varchar(255), primary key(empid));
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(255) , empzone varchar(255), primary key(empid))' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > create table employe( empid int NOT NULL  , firstname varchar(255) , lastname(255) , empzone varchar(255) , primary key(empid));
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(255) , empzone varchar(255) , primary key(empid))' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > CREATE TABLE BRANCH(EMPID INT NOT NULL ,
+                                            -> FIRSTNAME VARCHAR(255),
+                                            -> LASTNAME VARCHAR(255),
+                                            -> EMPZONE VARCHAR(255),
+                                            -> PRIMARY KEY(EMPID)
+                                            -> );
+Query OK, 0 rows affected (0.0496 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > select * from branch
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > select * from branch;
+Empty set (0.0093 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc branch;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | NO   | PRI | NULL    |       |
+| FIRSTNAME | varchar(255) | YES  |     | NULL    |       |
+| LASTNAME  | varchar(255) | YES  |     | NULL    |       |
+| EMPZONE   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.0030 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > CREATE TABLE DEMO(EMPID INT  NOT NULL ,
+                                            -> FIRSTNAME VARCHAR(255),
+                                            -> LASTNAME VARCHAR(255),
+                                            -> EMPAGE INT,
+                                            -> CHECK(EMPAGE>20)
+                                            -> );
+Query OK, 0 rows affected (0.0256 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELECT * FROM DEMO
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELECT * FROM DEMP;
+ERROR: 1146: Table 'newamitdb.demp' doesn't exist
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELCET * FROM NEWAMITDB
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELCET * FROM NEWAMITDB;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELCET * FROM NEWAMITDB' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > DESC DEMO;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | NO   |     | NULL    |       |
+| FIRSTNAME | varchar(255) | YES  |     | NULL    |       |
+| LASTNAME  | varchar(255) | YES  |     | NULL    |       |
+| EMPAGE    | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.0039 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO DEMO(EMPID , FIRSTNAME , LASTNAME , EMPAGE)VALUES (1,'ankit','kumar',12);
+ERROR: 3819: Check constraint 'demo_chk_1' is violated.
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO DEMO(EMPID , FIRSTNAME , LASTNAME , EMPAGE)VALUES (1,'ankit','kumar',22);
+Query OK, 1 row affected (0.0073 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > selcet * from demo;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selcet * from demo' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > select * from demo;
++-------+-----------+----------+--------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE |
++-------+-----------+----------+--------+
+|     1 | ankit     | kumar    |     22 |
++-------+-----------+----------+--------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc demo
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > desc demo;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | NO   |     | NULL    |       |
+| FIRSTNAME | varchar(255) | YES  |     | NULL    |       |
+| LASTNAME  | varchar(255) | YES  |     | NULL    |       |
+| EMPAGE    | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+4 rows in set (0.0031 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > CREATE TABLE SECDEMO(EMPID INT  NOT NULL , FIRSTNAME VARCHAR(255), LASTNAME VARCHAR(255), EMPDEPT VARCHAR(255) DEFAULT 'OPERATIONS' );
+Query OK, 0 rows affected (0.0349 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > DESC SECDEMO
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > DESC SECDEMO;
++-----------+--------------+------+-----+------------+-------+
+| Field     | Type         | Null | Key | Default    | Extra |
++-----------+--------------+------+-----+------------+-------+
+| EMPID     | int          | NO   |     | NULL       |       |
+| FIRSTNAME | varchar(255) | YES  |     | NULL       |       |
+| LASTNAME  | varchar(255) | YES  |     | NULL       |       |
+| EMPDEPT   | varchar(255) | YES  |     | OPERATIONS |       |
++-----------+--------------+------+-----+------------+-------+
+4 rows in set (0.0039 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO SECDEMO(EMPID ,FIRSTNAME ,LASTNAME) VALUES(1,'ANKIT', 'KUMAR');
+Query OK, 1 row affected (0.0061 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SELECT * FROM SECDEMO;
++-------+-----------+----------+------------+
+| EMPID | FIRSTNAME | LASTNAME | EMPDEPT    |
++-------+-----------+----------+------------+
+|     1 | ANKIT     | KUMAR    | OPERATIONS |
++-------+-----------+----------+------------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > CREATE INDEX DEMOINDEX
+                                            -> ON SECDEMO(FIRSTNAME);
+Query OK, 0 rows affected (0.0520 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > INSERT INTO SECDEMO(EMPID ,FIRSTNAME ,LASTNAME) VALUES(2,'SUNIL', 'KUMAR');
+Query OK, 1 row affected (0.0048 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > CREATE INDEX DEMOINDEX2 ON SECDEMO(FIRSTNAME,LASTNAME);
+Query OK, 0 rows affected (0.0312 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SHOW INDEXES FROM SECDEMO;
++---------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table   | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++---------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| secdemo |          1 | DEMOINDEX  |            1 | FIRSTNAME   | A         |           1 |     NULL | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
+| secdemo |          1 | DEMOINDEX2 |            1 | FIRSTNAME   | A         |           2 |     NULL | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
+| secdemo |          1 | DEMOINDEX2 |            2 | LASTNAME    | A         |           2 |     NULL | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
++---------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+3 rows in set (0.0084 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > DROP INDEX DEMOINDEX ON SECDEMO;
+Query OK, 0 rows affected (0.0145 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > SHOW INDEXES FROM SECDEMO;
++---------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table   | Non_unique | Key_name   | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++---------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| secdemo |          1 | DEMOINDEX2 |            1 | FIRSTNAME   | A         |           2 |     NULL | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
+| secdemo |          1 | DEMOINDEX2 |            2 | LASTNAME    | A         |           2 |     NULL | NULL   | YES  | BTREE      |         |               | YES     | NULL       |
++---------+------------+------------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+2 rows in set (0.0030 sec)
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > DROP SECDEMO;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SECDEMO' at line 1
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > CD ..
+                                            -> ^C
+ MySQL  localhost:33060+ ssl  newamitdb  SQL > use amitdb;
+Default schema set to `amitdb`.
+Fetching table and column names from `amitdb` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  amitdb  SQL > show tables;
++------------------+
+| Tables_in_amitdb |
++------------------+
+| department       |
+| employee         |
++------------------+
+2 rows in set (0.0025 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone |
++-------+-----------+----------+--------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |
++-------+-----------+----------+--------+---------+
+4 rows in set (0.0174 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > desc employee;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.0030 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> ADD EMPDEPT VARCHAR(255);
+Query OK, 0 rows affected (0.0176 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
+| EMPDEPT   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.0029 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> DROP COLUMN EMPDEPT;
+Query OK, 0 rows affected (0.0151 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.0030 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> ADD S VARCHAR(255) ,
+                                         -> ADD G VARCHAR(255);
+Query OK, 0 rows affected (0.0147 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
+| S         | varchar(255) | YES  |     | NULL    |       |
+| G         | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+7 rows in set (0.0031 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> DROP COLUMN S,G;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'G' at line 2
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE DROP COLUMN S,
+                                         -> DROP COLUMN G;
+Query OK, 0 rows affected (0.0147 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.0031 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> ADD COLUMN EMPDEPT VARCHAR(255);
+Query OK, 0 rows affected (0.0167 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
+| EMPDEPT   | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.0028 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> ALTER COLUMN EMPDEPT INT;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INT' at line 2
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE EMPLOYEE
+                                         -> MODIFY COLUMN EMPDEPT INT;
+Query OK, 4 rows affected (0.0477 sec)
+
+Records: 4  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
+| EMPDEPT   | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.0031 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT EMPAGE FROM EMPLOYEE;
++--------+
+| EMPAGE |
++--------+
+|     23 |
+|     27 |
+|     20 |
+|     32 |
++--------+
+4 rows in set (0.0008 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT DISTINCT EMPAGE FROM EMPLOYEE;
++--------+
+| EMPAGE |
++--------+
+|     23 |
+|     27 |
+|     20 |
+|     32 |
++--------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT FIRSTNAME FROM EMPLOYEE;
++-----------+
+| FIRSTNAME |
++-----------+
+| JACK      |
+| MOHAN     |
+| HRITIK    |
+| SOHAN     |
++-----------+
+4 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT FIRSTNAME  , LASTNAME ,EMPAGE  FROM EMPLOYEE;
++-----------+----------+--------+
+| FIRSTNAME | LASTNAME | EMPAGE |
++-----------+----------+--------+
+| JACK      | KUMAR    |     23 |
+| MOHAN     | RAJ      |     27 |
+| HRITIK    | KHURANA  |     20 |
+| SOHAN     | YADAV    |     32 |
++-----------+----------+--------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> WHERE EMPAGE=27;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
++-------+-----------+----------+--------+---------+---------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> WHERE EMPAGE>15;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> WHERE EMPAGE=23 AND EMPZONE  ='NORTH';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
++-------+-----------+----------+--------+---------+---------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> WHERE EMPAGE>12  AND EMPZONE ="NORTH" AND LASTNAME="KUMAR";
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
++-------+-----------+----------+--------+---------+---------+
+1 row in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> WHERE EMPZONE="WEST" OR EMPZONE="EAST";
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+2 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> WHERE NOT EMPAGE=20;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee ; # fetch all records from table
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+Query OK, 0 rows affected (0.0003 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee ; '' fetch all records from table
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+                                         -> /* ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > selct *
+                                         -> /*
+                                         -> /* retrieve all records from
+                                         -> /* table meplouee .we are using selct statemetn
+                                         -> /*statemetn
+                                         -> /*
+                                         -> from employee;
+                                        /*>
+                                        /*>
+                                        /*>
+                                        /*> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select *
+                                         -> /* lksdjflkdjf
+                                         -> /*lkjdfsl
+                                         -> /*
+                                         -> from employee;
+                                        /*>
+                                        /*>
+                                        /*> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select count(empage)
+                                         -> from employee
+                                         -> where empage=27;
++---------------+
+| count(empage) |
++---------------+
+|             1 |
++---------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select count(*)
+                                         -> from employee;
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.0029 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select empage as age_of_emp
+                                         -> from employee;
++------------+
+| age_of_emp |
++------------+
+|         23 |
+|         27 |
+|         20 |
+|         32 |
++------------+
+4 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select firstname as name ,lastname as name2
+                                         -> from employee;
++--------+---------+
+| name   | name2   |
++--------+---------+
+| JACK   | KUMAR   |
+| MOHAN  | RAJ     |
+| HRITIK | KHURANA |
+| SOHAN  | YADAV   |
++--------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where empzone in('north','east');
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+2 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> whe^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where firstname like 'h%';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+1 row in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where lastname like 'k%';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+2 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where empzone like '%h';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
++-------+-----------+----------+--------+---------+---------+
+2 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where empzone like '___t';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+2 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where empzone like '___t' or like '___t';
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'like '___t'' at line 2
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee where empzone like '___t' or '___t';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+2 rows in set, 1 warning (0.0034 sec)
+Warning (code 1292): Truncated incorrect DOUBLE value: '___t'
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee where empzone like '____t' or '___t';
+Empty set, 1 warning (0.0012 sec)
+Warning (code 1292): Truncated incorrect DOUBLE value: '___t'
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee where empzone like 'n%' or '___t';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
++-------+-----------+----------+--------+---------+---------+
+1 row in set, 1 warning (0.0012 sec)
+Warning (code 1292): Truncated incorrect DOUBLE value: '___t'
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee where empzone like 'n%';
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
++-------+-----------+----------+--------+---------+---------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where empage between 12 and 90;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee
+                                         -> where empage not between 25 and 30;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+3 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select firstname ,lastname,empage,
+                                         -> case
+                                         -> when empage>30 THEN 'WELL EXPERINCED'
+                                         -> WHEN EMPAGE=27 THEN 'SINGLE PERSON'
+                                         -> ELSE 'FRESHER...'
+                                         -> END AS ELIGIIBILITY
+                                         -> FROM EMPLOYEE;
++-----------+----------+--------+-----------------+
+| firstname | lastname | empage | ELIGIIBILITY    |
++-----------+----------+--------+-----------------+
+| JACK      | KUMAR    |     23 | FRESHER...      |
+| MOHAN     | RAJ      |     27 | SINGLE PERSON   |
+| HRITIK    | KHURANA  |     20 | FRESHER...      |
+| SOHAN     | YADAV    |     32 | WELL EXPERINCED |
++-----------+----------+--------+-----------------+
+4 rows in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     2 | MOHAN     | RAJ      |     27 | SOUTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > delete from employee
+                                         -> where empzone='south';
+Query OK, 1 row affected (0.0051 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
++-------+-----------+----------+--------+---------+---------+
+| EMPID | FirstName | LastName | EmpAge | EmpZone | EMPDEPT |
++-------+-----------+----------+--------+---------+---------+
+|     1 | JACK      | KUMAR    |     23 | NORTH   |    NULL |
+|     3 | HRITIK    | KHURANA  |     20 | EAST    |    NULL |
+|     4 | SOHAN     | YADAV    |     32 | WEST    |    NULL |
++-------+-----------+----------+--------+---------+---------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > delete from employeel
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > delete from employee;
+Query OK, 3 rows affected (0.0045 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
+Empty set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > desc employee;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| EMPID     | int          | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| EmpAge    | int          | YES  |     | NULL    |       |
+| EmpZone   | varchar(255) | YES  |     | NULL    |       |
+| EMPDEPT   | int          | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+6 rows in set (0.0031 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from employee;
+Empty set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > selct * from department
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  amitdb  SQL > select * from department;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |   NULL |
++-------+-----------+----------+--------+
+3 rows in set (0.0187 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > UPDATE DEPARTMENT
+                                         -> SET EMPAGE=24
+                                         -> WHERE EMPID=3;
+Query OK, 1 row affected (0.0059 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > UPDATE EMPLOYEE
+                                         -> SET EMPAGE=25
+                                         -> WHERE FIRSTNAME="SOHAN";
+Query OK, 0 rows affected (0.0009 sec)
+
+Rows matched: 0  Changed: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > UPDATE EMPLOYEE SET EMPAGE=25 WHERE FIRSTNAME='SOHAN';
+Query OK, 0 rows affected (0.0010 sec)
+
+Rows matched: 0  Changed: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DROP TABLE EMPLOYEE;
+Query OK, 0 rows affected (0.0243 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
+ERROR: 1146: Table 'amitdb.employee' doesn't exist
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
+ERROR: 1146: Table 'amitdb.employee' doesn't exist
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SHOW DATABASE;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DATABASE' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
+ERROR: 1146: Table 'amitdb.employee' doesn't exist
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT AVG(EMPAGE)
+                                         -> FROM EMPLOYEE;
+ERROR: 1146: Table 'amitdb.employee' doesn't exist
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT AVG(EMPAGE) FROM DEPARTMENT;
++-------------+
+| AVG(EMPAGE) |
++-------------+
+|     29.3333 |
++-------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT SUM(EMPAGE)
+                                         -> FROM DEPARTMENT;
++-------------+
+| SUM(EMPAGE) |
++-------------+
+|          88 |
++-------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT SUM(EMPAGE) AS RESULT
+                                         -> FROM EMPLOYEE;
+ERROR: 1146: Table 'amitdb.employee' doesn't exist
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT SUM(EMPAGE) AS RESULT FROM DEPARTMENT;
++--------+
+| RESULT |
++--------+
+|     88 |
++--------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> ORDER BY EMPAGE;
+ERROR: 1146: Table 'amitdb.employee' doesn't exist
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT ORDER BY EMPAGE;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     3 | JACK      | SPARROW  |     24 |
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
++-------+-----------+----------+--------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT
+                                         -> ORDER BY EMPAGE DESC;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE DEPARTMENT
+                                         -> UPDATE EMPAGE=25 WHERE FIRSTNAME='S%';
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UPDATE EMPAGE=25 WHERE FIRSTNAME='S%'' at line 2
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE DEPARTMENT UPDATE EMPAGE=25  FIRSTNAME='S%';
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'UPDATE EMPAGE=25  FIRSTNAME='S%'' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > ALTER TABLE DEPARTMENT MODIFY EMPAGE=25  FIRSTNAME='S%';
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=25  FIRSTNAME='S%'' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > CREATE TABLE EMPLOYEE(
+                                         -> EMPID INT not null AUTO_INCREMENT,
+                                         -> FIRSTNAME VARCHAR(255),
+                                         -> LASTNAME VARCHAR(255),
+                                         -> EMPAGE INT,
+                                         -> EMPAZONE VARCHAR(255),
+                                         -> PRIMARY KEY(EMPID));
+Query OK, 0 rows affected (0.0232 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| EMPID     | int          | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME | varchar(255) | YES  |     | NULL    |                |
+| LASTNAME  | varchar(255) | YES  |     | NULL    |                |
+| EMPAGE    | int          | YES  |     | NULL    |                |
+| EMPAZONE  | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.0040 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID,FIRSTNAME,LASTNAME,EMPAGE,EMPZONE)
+                                         -> VALUES('JACK','SPARRAOW',23,'NORTH');
+ERROR: 1054: Unknown column 'EMPZONE' in 'field list'
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(EMPID,FIRSTNAME,LASTNAME,EMPAGE,EMPAZONE) VALUES('JACK','SPARRAOW',23,'NORTH');
+ERROR: 1136: Column count doesn't match value count at row 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(FIRSTNAME,LASTNAME,EMPAGE,EMPAZONE) VALUES('JACK','SPARRAOW',23,'NORTH');
+Query OK, 1 row affected (0.0045 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > DESC EMPLOYEE;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| EMPID     | int          | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME | varchar(255) | YES  |     | NULL    |                |
+| LASTNAME  | varchar(255) | YES  |     | NULL    |                |
+| EMPAGE    | int          | YES  |     | NULL    |                |
+| EMPAZONE  | varchar(255) | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.0028 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
++-------+-----------+----------+--------+----------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(FIRSTNAME,LASTNAME,EMPAGE,EMPAZONE) VALUES('ANKIT','KUMAR',43,'SOUTH');
+Query OK, 1 row affected (0.0056 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
+|     2 | ANKIT     | KUMAR    |     43 | SOUTH    |
++-------+-----------+----------+--------+----------+
+2 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(FIRSTNAME,LASTNAME,EMPAGE,EMPAZONE) VALUES('AMIT','RANJAN',26,'WEST');
+Query OK, 1 row affected (0.0047 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
+|     2 | ANKIT     | KUMAR    |     43 | SOUTH    |
+|     3 | AMIT      | RANJAN   |     26 | WEST     |
++-------+-----------+----------+--------+----------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > INSERT INTO EMPLOYEE(FIRSTNAME,LASTNAME,EMPAGE,EMPAZONE) VALUES('GOLU','RAJ',29,'EAST');
+Query OK, 1 row affected (0.0045 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
+|     2 | ANKIT     | KUMAR    |     43 | SOUTH    |
+|     3 | AMIT      | RANJAN   |     26 | WEST     |
+|     4 | GOLU      | RAJ      |     29 | EAST     |
++-------+-----------+----------+--------+----------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT MAX(EMPAGE) AS AGE
+                                         -> FROM EMPLOYEE;
++-----+
+| AGE |
++-----+
+|  43 |
++-----+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT MIN(EMPAGE) AS AGE FROM EMPLOYEE;
++-----+
+| AGE |
++-----+
+|  23 |
++-----+
+1 row in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE
+                                         -> LIMIT 2;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
+|     2 | ANKIT     | KUMAR    |     43 | SOUTH    |
++-------+-----------+----------+--------+----------+
+2 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE LIMIT 1;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
++-------+-----------+----------+--------+----------+
+1 row in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
+|     2 | ANKIT     | KUMAR    |     43 | SOUTH    |
+|     3 | AMIT      | RANJAN   |     26 | WEST     |
+|     4 | GOLU      | RAJ      |     29 | EAST     |
++-------+-----------+----------+--------+----------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELCT *FROM DEPARTMENT;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELCT *FROM DEPARTMENT' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELCT * FROM DEPARTMENT;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SELCT * FROM DEPARTMENT' at line 1
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0009 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT EMPLOYEE.EMPID  ,DEPARMENT.FIRSTNAME
+                                         -> FROM EMPLOYEE
+                                         -> INNER JOIN DEPARTMENT ON EMPLOYEE.EMPID=DEPARTMENT.EMPID;
+ERROR: 1054: Unknown column 'DEPARMENT.FIRSTNAME' in 'field list'
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT EMPLOYEE.EMPID  , DEPARTMENT.FIRSTNAME FROM EMPLOYEE INNER JOIN DEPARTMENT ON EMPLOYEE.EMPID=DEPARTMENT.EMPID;
++-------+-----------+
+| EMPID | FIRSTNAME |
++-------+-----------+
+|     1 | SOHAN     |
+|     2 | mohan     |
+|     3 | JACK      |
++-------+-----------+
+3 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT * FROM EMPLOYEE;
++-------+-----------+----------+--------+----------+
+| EMPID | FIRSTNAME | LASTNAME | EMPAGE | EMPAZONE |
++-------+-----------+----------+--------+----------+
+|     1 | JACK      | SPARRAOW |     23 | NORTH    |
+|     2 | ANKIT     | KUMAR    |     43 | SOUTH    |
+|     3 | AMIT      | RANJAN   |     26 | WEST     |
+|     4 | GOLU      | RAJ      |     29 | EAST     |
++-------+-----------+----------+--------+----------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT* FROM DEPARTMENT;
++-------+-----------+----------+--------+
+| EmpId | FirstName | LastName | EmpAge |
++-------+-----------+----------+--------+
+|     1 | SOHAN     | YADAV    |     32 |
+|     2 | mohan     | kumar    |     32 |
+|     3 | JACK      | SPARROW  |     24 |
++-------+-----------+----------+--------+
+3 rows in set (0.0010 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT EMPLOYEE.EMPID  , DEPARTMENT.FIRSTNAME FROM EMPLOYEE LEFT JOIN EMPLOYEE ON EMPLOYEE.EMPID=DEPARTMENT.EMPID;
+ERROR: 1066: Not unique table/alias: 'EMPLOYEE'
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT EMPLOYEE.EMPID  , DEPARTMENT.FIRSTNAME FROM EMPLOYEE LEFT JOIN DEPARTMENT ON EMPLOYEE.EMPID=DEPARTMENT.EMPID;
++-------+-----------+
+| EMPID | FIRSTNAME |
++-------+-----------+
+|     1 | SOHAN     |
+|     2 | mohan     |
+|     3 | JACK      |
+|     4 | NULL      |
++-------+-----------+
+4 rows in set (0.0013 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL > SELECT EMPLOYEE.EMPID  , DEPARTMENT.FIRSTNAME FROM EMPLOYEE RIGHT JOIN DEPARTMENT ON EMPLOYEE.EMPID=DEPARTMENT.EMPID;
++-------+-----------+
+| EMPID | FIRSTNAME |
++-------+-----------+
+|     1 | SOHAN     |
+|     2 | mohan     |
+|     3 | JACK      |
++-------+-----------+
+3 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  amitdb  SQL >
+
